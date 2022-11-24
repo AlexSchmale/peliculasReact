@@ -7,10 +7,11 @@ import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Button } from '@mui/material';
 
 
 
-const CardMovie = ({pelicula, handleLike}) => {
+const CardMovie = ({pelicula, handleLike, deleteMovieById}) => {
 
   //const {name} = pelicula
   
@@ -31,10 +32,11 @@ const CardMovie = ({pelicula, handleLike}) => {
         {pelicula.description}
       </Typography>
     </CardContent>
-    <CardActions disableSpacing >
+    <CardActions disableSpacing sx={{display:'flex', justifyContent:'space-between'}} >
       <IconButton aria-label="add to favorites" onClick={()=>handleLike(pelicula)}>
         <FavoriteIcon color={pelicula.isLiked? "error":"disabled"} />
       </IconButton>
+      <Button type="button" variant="outlined" color="primary" onClick={()=>deleteMovieById(pelicula.id)}>Eliminar</Button>
     </CardActions>
   </Card>
   )
